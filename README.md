@@ -17,7 +17,11 @@ Using **Apache Spark Streaming**, the data is consumed and analyzed using **mach
 - 📲 Integration with mobile apps and wearable IoT devices
 
 ---
-
+## 📌 Use Cases
+- Elderly health monitoring
+- Remote chronic disease detection
+- Emergency alert systems in hospitals
+- Proactive wellness tracking
 ## 🛠 Tools & Technologies
 
 | Component            | Description                                                                 |
