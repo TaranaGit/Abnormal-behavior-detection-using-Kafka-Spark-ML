@@ -1,17 +1,88 @@
-# Abnormal-behavior-detection-using-Kafka-Spark-ML
+# 🩺 Abnormal Behavior Detection Using Kafka, Spark & Machine Learning
 
-This project introduces a real-time abnormal behavior detection platform developed using data streams from the E4 wristband, a wearable medical device. This platform facilitates the generation of streaming physiological signals captured by the wristband, which are then transmitted to a mobile application and subsequently captured by Kafka topics in real-time. Leveraging Spark streaming pipelines, we process these data streams and apply machine learning classification algorithms to detect both normal and abnormal behavior patterns. Upon detection of abnormality, notifications are promptly sent to designated recipients such as caregivers or medical professionals, enabling timely intervention when necessary. This project aims to enhance proactive healthcare monitoring, offering valuable insights and timely alerts for improved patient care.
+## 📘 Project Overview
 
-* Kafka
-    Kafka is an open-source event streaming platform primarily used for building real-time data pipelines and streaming applications. It is designed to handle high-throughput, fault-tolerant, and scalable data streaming by allowing producers to publish data to topics and consumers to subscribe to these topics and process the data in real-time. Kafka provides features such as durability, scalability, and distributed architecture, making it suitable for use cases like log aggregation, real-time analytics, and event-driven architectures.
+This project introduces a **real-time abnormal behavior detection platform** developed using data streams from the **E4 wristband**, a wearable medical device. The platform captures streaming **physiological signals** via a mobile application and sends them to **Apache Kafka** topics in real-time.
 
-* Spark
-    Spark, on the other hand, is an open-source distributed computing system, designed to process large-scale data processing tasks with high speed and ease of use. Spark offers various modules, including Spark SQL for structured data processing, Spark Streaming for real-time data processing.
+Using **Apache Spark Streaming**, the data is consumed and analyzed using **machine learning classification models** to distinguish between normal and abnormal behavioral patterns. Upon detecting abnormalities, alerts are sent to designated recipients such as caregivers or medical professionals, enabling **timely medical intervention**.
 
-# Getting Started
-    *  Command for running producer part: python .\ppg_producer.py   
-    *  Command for running Consumer part:spark-submit --packages org.apache.spark:spark-streaming-kafka-0-8_2.11:2.3.0 .\ppg_consumer.py
+---
 
+## 🌟 Key Features
+
+- 📡 Real-time ingestion of physiological signals from E4 wristband
+- 🧠 Online prediction using Spark Streaming & ML classifiers
+- 🚨 Instant alert notifications on abnormal behavior detection
+- ⚙️ Scalable and fault-tolerant architecture with Kafka
+- 📲 Integration with mobile apps and wearable IoT devices
+
+---
+
+## 🛠 Tools & Technologies
+
+| Component            | Description                                                                 |
+|----------------------|-----------------------------------------------------------------------------|
+| **E4 Wristband**     | Wearable medical device that captures physiological signals                 |
+| **Apache Kafka**     | Event streaming platform for real-time, high-throughput data ingestion      |
+| **Apache Spark**     | Distributed processing engine with Spark Streaming & MLlib modules          |
+| **Python**           | Used for both Kafka producer and Spark streaming consumer logic             |
+| **ThingsBoard**      | IoT visualization and integration platform for alerting and monitoring      |
+
+---
+
+## 🧾 Prerequisites
+
+- Java 8 or higher
+- Python 3.6+
+- Apache Kafka (v2.7+)
+- Apache Spark (v2.4+ or v3.x)
+- `pip install kafka-python`
+- E4 Wristband device + Bluetooth-enabled mobile phone
+- Spark dependencies for Kafka integration
+
+---
 # System Architecture
 ![Getting Started](image/systemArchitecture.PNG)
+### ⚙️ How It Works
+- Data Collection
+The E4 wristband captures physiological signals like heart rate, temperature, EDA, etc., and sends them to a mobile app via Bluetooth.
 
+- Streaming Ingestion
+The mobile app sends the data to a Kafka topic (health-data) in real-time.
+
+- Processing & Prediction
+Spark Streaming consumes the Kafka topic, preprocesses the data, and applies classification algorithms to detect anomalies.
+
+- Abnormality Detection
+If an abnormal state is detected, the system raises an alert and notifies the concerned parties via ThingsBoard or alert modules.
+---
+## 🧰 Getting Started
+
+### Clone the Repository
+
+```bash
+ git clone git@github.com:TaranaGit/Abnormal-behavior-detection-using-Kafka-Spark-ML.git
+```
+###  Start Kafka & ZooKeeper
+```bash
+# Start Zookeeper
+bin/zookeeper-server-start.sh config/zookeeper.properties
+```
+### Start Kafka broker
+```bash
+bin/kafka-server-start.sh config/server.properties
+```
+### Create A Kafka Topic
+```bash
+bin/kafka-topics.sh --create \
+  --topic health-data \
+  --bootstrap-server localhost:9092 \
+  --partitions 1 \
+  --replication-factor 1
+```
+### 🧪 Machine Learning Models Used
+✅ Decision Tree
+
+✅ Random Forest (Best Performance)
+
+✅ Logistic Regression
